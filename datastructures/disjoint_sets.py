@@ -1,5 +1,8 @@
 from collections import defaultdict
 
+### for m operations and n nodes, time complexity is O(m alpha(n))
+### for practical purposes, O(alpha(n)) is constant, so final complexity is O(m)
+
 class Node:
     def __init__(self, value, parent = None, rank = 0):
         self.val = value
