@@ -1,7 +1,16 @@
 from collections import deque
 
-# BFS-like approach
-# Generates each "node" one by one
+"""
+BFS-like approach
+Generates each "node" part by part
+
+Time complexity: O(N * 2^N) --> good enough for interview purposes
+Each position can hold an open or close parenthesis, so there are
+approx 2^N combinations to generate. For each combination, we have to
+concatenate a new parenthesis to the current string, which takes O(N)
+
+Space complexity: O(N * 2^N)
+"""
 
 def generate_valid_parentheses(num):
   result = deque([''])
