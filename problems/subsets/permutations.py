@@ -1,7 +1,16 @@
 from collections import deque
 
-# BFS-like approach to generating permutations
-# Generates each "node" by inserting at different positions
+"""
+BFS-like approach to generating permutations
+Generates each "node" by inserting at different positions
+
+Time complexity: O(N ∗ N!)
+There are N! permutations. At each iteration, we insert a new number in each of the
+current permutations, which take O(N) time.
+
+Space complexity: O(N ∗ N!)
+There are N! permutations, each containing N elements.
+"""
 
 def find_permutations(nums):
   numsLength = len(nums)
