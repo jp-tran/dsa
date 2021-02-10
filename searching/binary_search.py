@@ -12,6 +12,32 @@ def binary_search(nums: List[int], target: int) -> int:
       l = mid + 1
   return -1
 
+""" 
+Modified binary search
+While loop collapses window to 1 element using while (lo < hi)
+and either lo = mid or high = mid
+
+Set lo = mid + 1 if the target can never be at index mid 
+when lo = mid + 1 is triggered. 
+In the example below, peak_idx can never be mid when the slope is increasing.
+"""
+def search_bitonic_array(arr, key):
+  # find the peak index
+  lo = 0
+  hi = len(arr) - 1
+  while (lo < hi):
+    mid = (hi + lo) // 2
+    is_increasing = arr[mid] < arr[mid+1]
+    if is_increasing:
+      # mid can never be the peak when is_increasing, so we can safely set low = mid +1
+      lo = mid + 1 
+    else:
+      hi = mid
+  
+  peak_idx = lo
+
+  return peak_idx
+
 """ Binary Search for a Range of Numbers """
 class Solution:
   def searchRange(self, nums: List[int], target: int) -> List[int]:
