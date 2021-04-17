@@ -1,6 +1,12 @@
 """
 Given a directed graph, return an array of nodes where 
 each node appears before all the nodes it points to.
+
+Time complexity: O(|V| + |E|)
+    - |V| is the number of vertices
+    - |E| is the number of edges
+    
+Space complexity: O(|V|)
 """
 
 ### Kahn's Algorithm ###
