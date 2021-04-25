@@ -1,24 +1,35 @@
  class Solution:
-   def mergeSort(self, nums, l, r):
-      if l == r:
-          return [nums[l]]
-      mid = (l + r) // 2
-      left = self.mergeSort(nums, l, mid)
-      right = self.mergeSort(nums, mid+1, r)
-      return self.merge(left, right)
+   def mergeSort(self, nums):
+      if len(nums) <= 1:
+          return
+      mid = len(nums) // 2
+      left = nums[:mid]
+      right = nums[mid:]
+      self.mergeSort(left)
+      self.mergeSort(right)
+      self.merge(nums, left, right)
   
-  def merge(self, left, right):
-      result = []
-      l = r = 0
+  def merge(self, nums, left, right):
+      l = r = k = 0
       while l < len(left) and r < len(right):
           if self.compare(left[l], right[r]):
-              result.append(left[l])
+              nums[k] = left[l]
               l += 1
           else:
-              result.append(right[r])
+              nums[k] = right[r]
               r += 1
-      result.extend(left[l:] or right[r:])
-      return result
+          k += 1
+      
+      while l < len(left):
+          nums[k] = left[l]
+          l += 1
+          k += 1
+      
+      while r < len(right):
+          nums[k] = right[r]
+          r += 1
+          k += 1
+
   
   def compare(self, n1, n2):
     # comparator function used in LC problem 179: Largest Number
